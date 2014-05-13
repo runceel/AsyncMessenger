@@ -11,7 +11,7 @@
     <description>AsyncMvvmMessenger is extensions library. That is MVVMLightToolkit(PCL) Messenger class.</description>
     <tags>MVVM Messenger MVVMLightToolkit</tags>
     <dependencies>
-      <dependency id="Portable.MvvmLightLibs" />
+      <dependency id="Portable.MvvmLightLibs" version="4.4.32.1" />
     </dependencies>
   </metadata>
   <files>
