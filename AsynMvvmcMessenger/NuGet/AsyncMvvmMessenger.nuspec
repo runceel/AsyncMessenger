@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>AsyncMvvmMessenger</id>
+    <version>0.1.0.0</version>
+    <title>AsyncMvvmMessenger</title>
+    <authors>okazuki</authors>
+    <licenseUrl>https://github.com/runceel/AsyncMessenger/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/runceel/AsyncMessenger</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>AsyncMvvmMessenger is extensions library. That is MVVMLightToolkit(PCL) Messenger class.</description>
+    <tags>MVVM Messenger MVVMLightToolkit</tags>
+    <dependencies>
+      <dependency id="Portable.MvvmLightLibs" />
+    </dependencies>
+  </metadata>
+  <files>
+    <!-- Common -->
+    <file src="..\..\LICENSE" />
+
+    <!-- Windows 8.1-->
+    <file src="..\AsynMvvmcMessenger\bin\Release\AsyncMvvmMessenger.dll" target="lib/portable-net4+wp8+win8+wpa81+MonoAndroid+MonoTouch" />
+    <file src="..\AsynMvvmcMessenger\bin\Release\AsyncMvvmMessenger.XML" target="lib/portable-net4+wp8+win8+wpa81+MonoAndroid+MonoTouch" />
+  </files>
+</package>
