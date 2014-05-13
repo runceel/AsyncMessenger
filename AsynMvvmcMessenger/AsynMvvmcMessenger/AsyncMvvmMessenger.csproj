@@ -8,8 +8,8 @@
     <ProjectGuid>{3EE25F26-343F-4D48-B532-CE8721C0BE7A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AsynMvvmcMessenger</RootNamespace>
-    <AssemblyName>AsynMvvmcMessenger</AssemblyName>
+    <RootNamespace>AsyncMvvmMessenger</RootNamespace>
+    <AssemblyName>AsyncMvvmMessenger</AssemblyName>
     <DefaultLanguage>ja-JP</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

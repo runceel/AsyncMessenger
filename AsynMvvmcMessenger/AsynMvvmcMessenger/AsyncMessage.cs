@@ -5,15 +5,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AsynMvvmcMessenger
+namespace AsyncMvvmMessenger
 {
     class AsyncMessage<TMessage> : MessageBase
         where TMessage : MessageBase
     {
         private readonly TaskCompletionSource<object> source = new TaskCompletionSource<object>();
-        public TMessage InnerMessage { get; set; }
+        public TMessage InnerMessage { get; private set; }
 
         public Task<object> Task { get { return this.source.Task; } }
+
+        public AsyncMessage(TMessage innerMessage)
+        {
+            this.InnerMessage = innerMessage;
+        }
 
         public void SetResult(object result)
         {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AsynMvvmcMessenger
+namespace AsyncMvvmMessenger
 {
     class AsyncMessageReceiver<TMessage> : IDisposable
         where TMessage : MessageBase
