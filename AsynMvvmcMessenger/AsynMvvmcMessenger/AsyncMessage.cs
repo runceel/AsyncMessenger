@@ -1,12 +1,13 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AsyncMvvmMessenger
 {
+    /// <summary>
+    /// awaitable message
+    /// </summary>
+    /// <typeparam name="TMessage"></typeparam>
     class AsyncMessage<TMessage> : MessageBase
         where TMessage : MessageBase
     {

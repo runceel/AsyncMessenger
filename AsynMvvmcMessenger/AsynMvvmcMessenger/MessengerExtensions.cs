@@ -1,14 +1,22 @@
 ﻿using GalaSoft.MvvmLight.Messaging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AsyncMvvmMessenger
 {
+    /// <summary>
+    /// IMessenger extension methods.
+    /// </summary>
     public static class MessengerExtensions
     {
+        /// <summary>
+        /// Send AsyncMessage.<br/>
+        /// Important!!: If not found receiver then freeze.
+        /// </summary>
+        /// <typeparam name="TMessage">wrapped message type</typeparam>
+        /// <param name="self"></param>
+        /// <param name="message">wrapped message</param>
+        /// <returns></returns>
         public static Task SendAsync<TMessage>(this IMessenger self, TMessage message)
             where TMessage : MessageBase
         {
@@ -17,6 +25,15 @@ namespace AsyncMvvmMessenger
             return asyncMessage.Task;
         }
 
+        /// <summary>
+        /// Send AsyncMessage.<br/>
+        /// Important!!: If not found receiver then freeze.
+        /// </summary>
+        /// <typeparam name="TMessage">wrapped message type</typeparam>
+        /// <typeparam name="TResult">return type</typeparam>
+        /// <param name="self"></param>
+        /// <param name="message">wrapped message</param>
+        /// <returns></returns>
         public static async Task<TResult> SendAsync<TMessage, TResult>(this IMessenger self, TMessage message)
             where TMessage : MessageBase
         {
@@ -25,6 +42,14 @@ namespace AsyncMvvmMessenger
             return (TResult)await asyncMessage.Task;
         }
 
+        /// <summary>
+        /// register message receive callback method. you must have return value reference. if don't have reference then unregist callback, mvvm light WeakReference.
+        /// </summary>
+        /// <typeparam name="TMessage"></typeparam>
+        /// <param name="self"></param>
+        /// <param name="token"></param>
+        /// <param name="callback"></param>
+        /// <returns>when call dispose method, unregist.</returns>
         public static IDisposable RegisterAsyncMessage<TMessage>(this IMessenger self,
             object token,
             Func<TMessage, Task> callback)
@@ -40,6 +65,14 @@ namespace AsyncMvvmMessenger
                     return null;
                 });
         }
+
+        /// <summary>
+        /// register message receive callback method. you must have return value reference. if don't have reference then unregist callback, mvvm light WeakReference.
+        /// </summary>
+        /// <typeparam name="TMessage"></typeparam>
+        /// <param name="self"></param>
+        /// <param name="callback"></param>
+        /// <returns>when call dispose method, unregist.</returns>
         public static IDisposable RegisterAsyncMessage<TMessage>(this IMessenger self,
             Func<TMessage, Task> callback)
             where TMessage : MessageBase
@@ -55,6 +88,15 @@ namespace AsyncMvvmMessenger
                 });
         }
 
+        /// <summary>
+        /// register message receive callback method. you must have return value reference. if don't have reference then unregist callback, mvvm light WeakReference.
+        /// </summary>
+        /// <typeparam name="TMessage"></typeparam>
+        /// <param name="self"></param>
+        /// <param name="token"></param>
+        /// <param name="receiveDerivedMessagesToo"></param>
+        /// <param name="callback"></param>
+        /// <returns>when call dispose method, unregist.</returns>
         public static IDisposable RegisterAsyncMessage<TMessage>(this IMessenger self,
             object token,
             bool receiveDerivedMessagesToo,
@@ -72,7 +114,15 @@ namespace AsyncMvvmMessenger
                 });
         }
 
-
+        /// <summary>
+        /// register message receive callback method. you must have return value reference. if don't have reference then unregist callback, mvvm light WeakReference.
+        /// </summary>
+        /// <typeparam name="TMessage"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="self"></param>
+        /// <param name="token"></param>
+        /// <param name="callback"></param>
+        /// <returns>when call dispose method, unregist.</returns>
         public static IDisposable RegisterAsyncMessage<TMessage, TResult>(this IMessenger self,
             object token,
             Func<TMessage, Task<TResult>> callback)
@@ -85,6 +135,14 @@ namespace AsyncMvvmMessenger
                 async m => (TResult)await callback(m));
         }
 
+        /// <summary>
+        /// register message receive callback method. you must have return value reference. if don't have reference then unregist callback, mvvm light WeakReference.
+        /// </summary>
+        /// <typeparam name="TMessage"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="self"></param>
+        /// <param name="callback"></param>
+        /// <returns>when call dispose method, unregist.</returns>
         public static IDisposable RegisterAsyncMessage<TMessage, TResult>(this IMessenger self,
             Func<TMessage, Task<TResult>> callback)
             where TMessage : MessageBase
@@ -96,7 +154,16 @@ namespace AsyncMvvmMessenger
                 async m => (TResult)await callback(m));
         }
 
-
+        /// <summary>
+        /// register message receive callback method. you must have return value reference. if don't have reference then unregist callback, mvvm light WeakReference.
+        /// </summary>
+        /// <typeparam name="TMessage"></typeparam>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="self"></param>
+        /// <param name="token"></param>
+        /// <param name="receiveDerivedMessagesToo"></param>
+        /// <param name="callback"></param>
+        /// <returns>when call dispose method, unregist.</returns>
         public static IDisposable RegisterAsyncMessage<TMessage, TResult>(this IMessenger self,
             object token,
             bool receiveDerivedMessagesToo,
