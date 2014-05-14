@@ -110,10 +110,18 @@ If universal Windows app...
 ```cs
 // write receive code. global area. eq: App.OnLaunched method.
 
+// field
+private IDisposable notificationMessageToken;
+
+
 // Generic parameter is Message type and Return type.
-Messenger.Default
-    .ReceiveAsyncMessage<NotificationMessage<string>, bool>(async receiveMessage =>
+this.notificationMessageToken = Messenger.Default
+    .RegisterAsyncMessage<NotificationMessage<string>, bool>(async receiveMessage =>
+    {
         var dialog = new MessageDialog(receiveMessage.Content, receiveMessage.Notification);
-        var 
-    }));
+        dialog.Commands.Add(new UICommand("OK"){ Id = 0 });
+        dialog.Commands.Add(new UICommand("Cancel") { Id = 1 });
+        var dialogResult = await dialog.ShowAsync();
+        return (int)dialogResult.Id == 0;
+    });
 ```
